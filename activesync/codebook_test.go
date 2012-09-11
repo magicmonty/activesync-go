@@ -7,7 +7,7 @@ import (
 
 func Test_MakeCodeBook(t *testing.T) {
 	var (
-		cb *wbxml.CodeBook = MakeCodeBook()
+		cb *wbxml.CodeBook = MakeCodeBook("14.1")
 		i  byte
 	)
 	if !cb.IsReady() {

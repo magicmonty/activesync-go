@@ -4,7 +4,7 @@ import (
 	. "github.com/magicmonty/wbxml-go/wbxml"
 )
 
-func MakeCodeBook() *CodeBook {
+func MakeCodeBook(ProtocolVersion string) *CodeBook {
 	result := NewCodeBook()
 
 	result.AddTagCodePage(makeAirSyncCodePage())
@@ -69,9 +69,9 @@ func makeAirSyncCodePage() CodePage {
 	result.AddTag("Wait", 0x24)
 	result.AddTag("Limit", 0x25)
 	result.AddTag("Partial", 0x26)
-	result.AddTag("ConversationMode", 0x27)
-	result.AddTag("MaxItems", 0x28)
-	result.AddTag("HeartbeatInterval", 0x29)
+	result.AddTag("ConversationMode", 0x27)  // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("MaxItems", 0x28)          // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("HeartbeatInterval", 0x29) // not supported with MS-ASProtocolVersion 12.1
 
 	return result
 }
@@ -131,8 +131,8 @@ func makeContactsCodePage() CodePage {
 	result.AddTag("YomiFirstName", 0x39)
 	result.AddTag("YomiLastName", 0x3A)
 	result.AddTag("Picture", 0x3C)
-	result.AddTag("Alias", 0x3D)
-	result.AddTag("WeightedRank", 0x3E)
+	result.AddTag("Alias", 0x3D)        // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("WeightedRank", 0x3E) // not supported with MS-ASProtocolVersion 12.1
 
 	return result
 }
@@ -151,8 +151,8 @@ func makeEmailCodePage() CodePage {
 	result.AddTag("From", 0x18)
 	result.AddTag("ReplyTo", 0x19)
 	result.AddTag("AllDayEvent", 0x1A)
-	result.AddTag("Categories", 0x1B)
-	result.AddTag("Category", 0x1C)
+	result.AddTag("Categories", 0x1B) // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("Category", 0x1C)   // not supported with MS-ASProtocolVersion 12.1
 	result.AddTag("DTStamp", 0x1D)
 	result.AddTag("EndTime", 0x1E)
 	result.AddTag("InstanceType", 0x1F)
@@ -184,11 +184,12 @@ func makeEmailCodePage() CodePage {
 	result.AddTag("ContentClass", 0x3C)
 	result.AddTag("FlagType", 0x3D)
 	result.AddTag("CompleteTime", 0x3E)
-	result.AddTag("DisallowNewTimeProposal", 0x3F)
+	result.AddTag("DisallowNewTimeProposal", 0x3F) // not supported with MS-ASProtocolVersion 12.1
 
 	return result
 }
 
+// not used anymore
 func makeAirNotifyCodePage() CodePage {
 	result := NewCodePage("AirNotify", 3)
 	return result
@@ -232,15 +233,15 @@ func makeCalendarCodePage() CodePage {
 	result.AddTag("UID", 0x28)
 	result.AddTag("AttendeeStatus", 0x29)
 	result.AddTag("AttendeeType", 0x2A)
-	result.AddTag("DisallowNewTimeProposal", 0x33)
-	result.AddTag("ResponseRequested", 0x34)
-	result.AddTag("AppointmentReplyTime", 0x35)
-	result.AddTag("ResponseType", 0x36)
-	result.AddTag("CalendarType", 0x37)
-	result.AddTag("IsLeapMonth", 0x38)
-	result.AddTag("FirstDayOfWeek", 0x39)
-	result.AddTag("OnlineMeetingConfLink", 0x3A)
-	result.AddTag("OnlineMeetingExternalLink", 0x3B)
+	result.AddTag("DisallowNewTimeProposal", 0x33)   // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("ResponseRequested", 0x34)         // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("AppointmentReplyTime", 0x35)      // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("ResponseType", 0x36)              // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("CalendarType", 0x37)              // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("IsLeapMonth", 0x38)               // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("FirstDayOfWeek", 0x39)            // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("OnlineMeetingConfLink", 0x3A)     // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("OnlineMeetingExternalLink", 0x3B) // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
@@ -264,12 +265,13 @@ func makeItemEstimateCodePage() CodePage {
 	result := NewCodePage("ItemEstimate", 6)
 
 	result.AddTag("GetItemEstimate", 0x05)
-	result.AddTag("Version", 0x06)
+	result.AddTag("Version", 0x06) // only supported with MS-ASProtocolVersion 12.1
 	result.AddTag("Collections", 0x07)
 	result.AddTag("Collection", 0x08)
-	result.AddTag("Class", 0x09)
+	result.AddTag("Class", 0x09) // only supported with MS-ASProtocolVersion 12.1
+	// with 14.0 and 14.1 Tha Class tag from CodePage 0 (ActiveSync) is used
 	result.AddTag("CollectionId", 0x0A)
-	result.AddTag("DateTime", 0x0B)
+	result.AddTag("DateTime", 0x0B) // only supported with MS-ASProtocolVersion 12.1
 	result.AddTag("Estimate", 0x0C)
 	result.AddTag("Response", 0x0D)
 	result.AddTag("Status", 0x0E)
@@ -345,15 +347,15 @@ func makeTasksCodePage() CodePage {
 	result.AddTag("Subject", 0x20)
 	result.AddTag("OrdinalDate", 0x22)
 	result.AddTag("SubOrdinalDate", 0x23)
-	result.AddTag("CalendarType", 0x24)
-	result.AddTag("IsLeapMonth", 0x25)
-	result.AddTag("FirstDayOfWeek", 0x26)
+	result.AddTag("CalendarType", 0x24)   // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("IsLeapMonth", 0x25)    // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("FirstDayOfWeek", 0x26) // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
 
 func makeResolveRecipientsCodePage() CodePage {
-	result := NewCodePage("Recipients", 10)
+	result := NewCodePage("ResolveRecipients", 10)
 
 	result.AddTag("ResolveRecipients", 0x05)
 	result.AddTag("Response", 0x06)
@@ -372,14 +374,14 @@ func makeResolveRecipientsCodePage() CodePage {
 	result.AddTag("MaxCertificates", 0x13)
 	result.AddTag("MaxAmbiguousRecipients", 0x14)
 	result.AddTag("CertificateCount", 0x15)
-	result.AddTag("Availability", 0x16)
-	result.AddTag("StartTime", 0x17)
-	result.AddTag("EndTime", 0x18)
-	result.AddTag("MergedFreeBusy", 0x19)
-	result.AddTag("Picture", 0x1A)
-	result.AddTag("MaxSize", 0x1B)
-	result.AddTag("Data", 0x1C)
-	result.AddTag("MaxPictures", 0x1D)
+	result.AddTag("Availability", 0x16)   // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("StartTime", 0x17)      // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("EndTime", 0x18)        // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("MergedFreeBusy", 0x19) // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("Picture", 0x1A)        // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("MaxSize", 0x1B)        // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("Data", 0x1C)           // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("MaxPictures", 0x1D)    // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
@@ -508,7 +510,7 @@ func makeSearchCodePage() CodePage {
 	result.AddTag("EqualTo", 0x11)
 	result.AddTag("Value", 0x12)
 	result.AddTag("And", 0x13)
-	result.AddTag("Or", 0x14)
+	result.AddTag("Or", 0x14) // not supported with MS-ASProtocolVersion 12.1
 	result.AddTag("FreeText", 0x15)
 	result.AddTag("DeepTraversal", 0x17)
 	result.AddTag("LongId", 0x18)
@@ -518,9 +520,9 @@ func makeSearchCodePage() CodePage {
 	result.AddTag("UserName", 0x1E)
 	result.AddTag("Password", 0x1F)
 	result.AddTag("ConversationId", 0x20)
-	result.AddTag("Picture", 0x21)
-	result.AddTag("MaxSize", 0x22)
-	result.AddTag("MaxPictures", 0x23)
+	result.AddTag("Picture", 0x21)     // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("MaxSize", 0x22)     // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("MaxPictures", 0x23) // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
@@ -539,9 +541,9 @@ func makeGALCodePage() CodePage {
 	result.AddTag("HomePhone", 0x0D)
 	result.AddTag("MobilePhone", 0x0E)
 	result.AddTag("EmailAddress", 0x0F)
-	result.AddTag("Picture", 0x10)
-	result.AddTag("Status", 0x11)
-	result.AddTag("Data", 0x12)
+	result.AddTag("Picture", 0x10) // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("Status", 0x11)  // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("Data", 0x12)    // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
@@ -567,10 +569,10 @@ func makeAirSyncBaseCodePage() CodePage {
 	result.AddTag("IsInline", 0x15)
 	result.AddTag("NativeBodyType", 0x16)
 	result.AddTag("ContentType", 0x17)
-	result.AddTag("Preview", 0x18)
-	result.AddTag("BodyPartPreference", 0x19)
-	result.AddTag("BodyPart", 0x1A)
-	result.AddTag("Status", 0x1B)
+	result.AddTag("Preview", 0x18)            // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("BodyPartPreference", 0x19) // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("BodyPart", 0x1A)           // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("Status", 0x1B)             // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
@@ -606,16 +608,16 @@ func makeSettingsCodePage() CodePage {
 	result.AddTag("EmailAddresses", 0x1E)
 	result.AddTag("SmtpAddress", 0x1F)
 	result.AddTag("UserAgent", 0x20)
-	result.AddTag("EnableOutboundSMS", 0x21)
-	result.AddTag("MobileOperator", 0x22)
-	result.AddTag("PrimarySmtpAddress", 0x23)
-	result.AddTag("Accounts", 0x24)
-	result.AddTag("Account", 0x25)
-	result.AddTag("AccountId", 0x26)
-	result.AddTag("AccountName", 0x27)
-	result.AddTag("UserDisplayName", 0x28)
-	result.AddTag("SendDisabled", 0x29)
-	result.AddTag("RightsManagementInformation", 0x2B)
+	result.AddTag("EnableOutboundSMS", 0x21)           // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("MobileOperator", 0x22)              // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("PrimarySmtpAddress", 0x23)          // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("Accounts", 0x24)                    // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("Account", 0x25)                     // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("AccountId", 0x26)                   // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("AccountName", 0x27)                 // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("UserDisplayName", 0x28)             // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("SendDisabled", 0x29)                // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("RightsManagementInformation", 0x2B) // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
@@ -655,14 +657,15 @@ func makeItemOperationsCodePage() CodePage {
 	result.AddTag("DeleteSubFolders", 0x13)
 	result.AddTag("UserName", 0x14)
 	result.AddTag("Password", 0x15)
-	result.AddTag("Move", 0x16)
-	result.AddTag("DstFldId", 0x17)
-	result.AddTag("ConversationId", 0x18)
-	result.AddTag("MoveAlways", 0x19)
+	result.AddTag("Move", 0x16)           // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("DstFldId", 0x17)       // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("ConversationId", 0x18) // not supported with MS-ASProtocolVersion 12.1
+	result.AddTag("MoveAlways", 0x19)     // not supported with MS-ASProtocolVersion 12.1
 
 	return result
 }
 
+// not supported with MS-ASProtocolVersion 12.1
 func makeComposeMailCodePage() CodePage {
 	result := NewCodePage("ComposeMail", 21)
 
@@ -679,11 +682,12 @@ func makeComposeMailCodePage() CodePage {
 	result.AddTag("Mime", 0x10)
 	result.AddTag("ClientId", 0x11)
 	result.AddTag("Status", 0x12)
-	result.AddTag("AccountId", 0x13)
+	result.AddTag("AccountId", 0x13) // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
 
+// not supported with MS-ASProtocolVersion 12.1
 func makeEmail2CodePage() CodePage {
 	result := NewCodePage("Email2", 22)
 
@@ -699,13 +703,14 @@ func makeEmail2CodePage() CodePage {
 	result.AddTag("Sender", 0x0E)
 	result.AddTag("CalendarType", 0x0F)
 	result.AddTag("IsLeapMonth", 0x10)
-	result.AddTag("AccountId", 0x11)
-	result.AddTag("FirstDayOfWeek", 0x12)
-	result.AddTag("MeetingMessageType", 0x13)
+	result.AddTag("AccountId", 0x11)          // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("FirstDayOfWeek", 0x12)     // not supported with MS-ASProtocolVersion 12.1 or 14.0
+	result.AddTag("MeetingMessageType", 0x13) // not supported with MS-ASProtocolVersion 12.1 or 14.0
 
 	return result
 }
 
+// not supported with MS-ASProtocolVersion 12.1
 func makeNotesCodePage() CodePage {
 	result := NewCodePage("Notes", 23)
 
@@ -718,6 +723,7 @@ func makeNotesCodePage() CodePage {
 	return result
 }
 
+// not supported with MS-ASProtocolVersion 12.1 or 14.1
 func makeRightsManagementCodePage() CodePage {
 	result := NewCodePage("RightsManagement", 24)
 
