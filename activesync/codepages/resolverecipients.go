@@ -5,36 +5,94 @@ import (
 	. "github.com/magicmonty/wbxml-go/wbxml"
 )
 
-func ResolveRecipients(protocolVersion byte) CodePage {
-	result := NewCodePage("ResolveRecipients", 10)
+const (
+	NS_RESOLVE_RECIPIENTS                         string = "ResolveRecipients"
+	TAG_RESOLVE_RECIPIENTS_RESOLVERECIPIENTS      string = "ResolveRecipients"
+	TAG_RESOLVE_RECIPIENTS_RESPONSE               string = "Response"
+	TAG_RESOLVE_RECIPIENTS_STATUS                 string = "Status"
+	TAG_RESOLVE_RECIPIENTS_TYPE                   string = "Type"
+	TAG_RESOLVE_RECIPIENTS_RECIPIENT              string = "Recipient"
+	TAG_RESOLVE_RECIPIENTS_DISPLAYNAME            string = "DisplayName"
+	TAG_RESOLVE_RECIPIENTS_EMAILADDRESS           string = "EmailAddress"
+	TAG_RESOLVE_RECIPIENTS_CERTIFICATES           string = "Certificates"
+	TAG_RESOLVE_RECIPIENTS_CERTIFICATE            string = "Certificate"
+	TAG_RESOLVE_RECIPIENTS_MINICERTIFICATE        string = "MiniCertificate"
+	TAG_RESOLVE_RECIPIENTS_OPTIONS                string = "Options"
+	TAG_RESOLVE_RECIPIENTS_TO                     string = "To"
+	TAG_RESOLVE_RECIPIENTS_CERTIFICATERETRIEVAL   string = "CertificateRetrieval"
+	TAG_RESOLVE_RECIPIENTS_RECIPIENTCOUNT         string = "RecipientCount"
+	TAG_RESOLVE_RECIPIENTS_MAXCERTIFICATES        string = "MaxCertificates"
+	TAG_RESOLVE_RECIPIENTS_MAXAMBIGUOUSRECIPIENTS string = "MaxAmbiguousRecipients"
+	TAG_RESOLVE_RECIPIENTS_CERTIFICATECOUNT       string = "CertificateCount"
+	TAG_RESOLVE_RECIPIENTS_AVAILABILITY           string = "Availability"
+	TAG_RESOLVE_RECIPIENTS_STARTTIME              string = "StartTime"
+	TAG_RESOLVE_RECIPIENTS_ENDTIME                string = "EndTime"
+	TAG_RESOLVE_RECIPIENTS_MERGEDFREEBUSY         string = "MergedFreeBusy"
+	TAG_RESOLVE_RECIPIENTS_PICTURE                string = "Picture"
+	TAG_RESOLVE_RECIPIENTS_MAXSIZE                string = "MaxSize"
+	TAG_RESOLVE_RECIPIENTS_DATA                   string = "Data"
+	TAG_RESOLVE_RECIPIENTS_MAXPICTURES            string = "MaxPictures"
+)
 
-	result.AddTag("ResolveRecipients", 0x05)
-	result.AddTag("Response", 0x06)
-	result.AddTag("Status", 0x07)
-	result.AddTag("Type", 0x08)
-	result.AddTag("Recipient", 0x09)
-	result.AddTag("DisplayName", 0x0A)
-	result.AddTag("EmailAddress", 0x0B)
-	result.AddTag("Certificates", 0x0C)
-	result.AddTag("Certificate", 0x0D)
-	result.AddTag("MiniCertificate", 0x0E)
-	result.AddTag("Options", 0x0F)
-	result.AddTag("To", 0x10)
-	result.AddTag("CertificateRetrieval", 0x11)
-	result.AddTag("RecipientCount", 0x12)
-	result.AddTag("MaxCertificates", 0x13)
-	result.AddTag("MaxAmbiguousRecipients", 0x14)
-	result.AddTag("CertificateCount", 0x15)
+const (
+	CP_RESOLVE_RECIPIENTS                        byte = 10
+	ID_RESOLVE_RECIPIENTS_RESOLVERECIPIENTS      byte = 0x05
+	ID_RESOLVE_RECIPIENTS_RESPONSE               byte = 0x06
+	ID_RESOLVE_RECIPIENTS_STATUS                 byte = 0x07
+	ID_RESOLVE_RECIPIENTS_TYPE                   byte = 0x08
+	ID_RESOLVE_RECIPIENTS_RECIPIENT              byte = 0x09
+	ID_RESOLVE_RECIPIENTS_DISPLAYNAME            byte = 0x0A
+	ID_RESOLVE_RECIPIENTS_EMAILADDRESS           byte = 0x0B
+	ID_RESOLVE_RECIPIENTS_CERTIFICATES           byte = 0x0C
+	ID_RESOLVE_RECIPIENTS_CERTIFICATE            byte = 0x0D
+	ID_RESOLVE_RECIPIENTS_MINICERTIFICATE        byte = 0x0E
+	ID_RESOLVE_RECIPIENTS_OPTIONS                byte = 0x0F
+	ID_RESOLVE_RECIPIENTS_TO                     byte = 0x10
+	ID_RESOLVE_RECIPIENTS_CERTIFICATERETRIEVAL   byte = 0x11
+	ID_RESOLVE_RECIPIENTS_RECIPIENTCOUNT         byte = 0x12
+	ID_RESOLVE_RECIPIENTS_MAXCERTIFICATES        byte = 0x13
+	ID_RESOLVE_RECIPIENTS_MAXAMBIGUOUSRECIPIENTS byte = 0x14
+	ID_RESOLVE_RECIPIENTS_CERTIFICATECOUNT       byte = 0x15
+	ID_RESOLVE_RECIPIENTS_AVAILABILITY           byte = 0x16
+	ID_RESOLVE_RECIPIENTS_STARTTIME              byte = 0x17
+	ID_RESOLVE_RECIPIENTS_ENDTIME                byte = 0x18
+	ID_RESOLVE_RECIPIENTS_MERGEDFREEBUSY         byte = 0x19
+	ID_RESOLVE_RECIPIENTS_PICTURE                byte = 0x1A
+	ID_RESOLVE_RECIPIENTS_MAXSIZE                byte = 0x1B
+	ID_RESOLVE_RECIPIENTS_DATA                   byte = 0x1C
+	ID_RESOLVE_RECIPIENTS_MAXPICTURES            byte = 0x1D
+)
+
+func ResolveRecipients(protocolVersion byte) CodePage {
+	result := NewCodePage(NS_RESOLVE_RECIPIENTS, CP_RESOLVE_RECIPIENTS)
+
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_RESOLVERECIPIENTS, ID_RESOLVE_RECIPIENTS_RESOLVERECIPIENTS)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_RESPONSE, ID_RESOLVE_RECIPIENTS_RESPONSE)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_STATUS, ID_RESOLVE_RECIPIENTS_STATUS)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_TYPE, ID_RESOLVE_RECIPIENTS_TYPE)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_RECIPIENT, ID_RESOLVE_RECIPIENTS_RECIPIENT)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_DISPLAYNAME, ID_RESOLVE_RECIPIENTS_DISPLAYNAME)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_EMAILADDRESS, ID_RESOLVE_RECIPIENTS_EMAILADDRESS)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_CERTIFICATES, ID_RESOLVE_RECIPIENTS_CERTIFICATES)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_CERTIFICATE, ID_RESOLVE_RECIPIENTS_CERTIFICATE)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_MINICERTIFICATE, ID_RESOLVE_RECIPIENTS_MINICERTIFICATE)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_OPTIONS, ID_RESOLVE_RECIPIENTS_OPTIONS)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_TO, ID_RESOLVE_RECIPIENTS_TO)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_CERTIFICATERETRIEVAL, ID_RESOLVE_RECIPIENTS_CERTIFICATERETRIEVAL)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_RECIPIENTCOUNT, ID_RESOLVE_RECIPIENTS_RECIPIENTCOUNT)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_MAXCERTIFICATES, ID_RESOLVE_RECIPIENTS_MAXCERTIFICATES)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_MAXAMBIGUOUSRECIPIENTS, ID_RESOLVE_RECIPIENTS_MAXAMBIGUOUSRECIPIENTS)
+	result.AddTag(TAG_RESOLVE_RECIPIENTS_CERTIFICATECOUNT, ID_RESOLVE_RECIPIENTS_CERTIFICATECOUNT)
 	if protocolVersion > PROTOCOL_VERSION_12_1 {
-		result.AddTag("Availability", 0x16)   // not supported with MS-ASProtocolVersion 12.1
-		result.AddTag("StartTime", 0x17)      // not supported with MS-ASProtocolVersion 12.1
-		result.AddTag("EndTime", 0x18)        // not supported with MS-ASProtocolVersion 12.1
-		result.AddTag("MergedFreeBusy", 0x19) // not supported with MS-ASProtocolVersion 12.1
+		result.AddTag(TAG_RESOLVE_RECIPIENTS_AVAILABILITY, ID_RESOLVE_RECIPIENTS_AVAILABILITY)     // not supported with MS-ASProtocolVersion 12.1
+		result.AddTag(TAG_RESOLVE_RECIPIENTS_STARTTIME, ID_RESOLVE_RECIPIENTS_STARTTIME)           // not supported with MS-ASProtocolVersion 12.1
+		result.AddTag(TAG_RESOLVE_RECIPIENTS_ENDTIME, ID_RESOLVE_RECIPIENTS_ENDTIME)               // not supported with MS-ASProtocolVersion 12.1
+		result.AddTag(TAG_RESOLVE_RECIPIENTS_MERGEDFREEBUSY, ID_RESOLVE_RECIPIENTS_MERGEDFREEBUSY) // not supported with MS-ASProtocolVersion 12.1
 		if protocolVersion > PROTOCOL_VERSION_14_0 {
-			result.AddTag("Picture", 0x1A)     // not supported with MS-ASProtocolVersion 12.1 or 14.0
-			result.AddTag("MaxSize", 0x1B)     // not supported with MS-ASProtocolVersion 12.1 or 14.0
-			result.AddTag("Data", 0x1C)        // not supported with MS-ASProtocolVersion 12.1 or 14.0
-			result.AddTag("MaxPictures", 0x1D) // not supported with MS-ASProtocolVersion 12.1 or 14.0
+			result.AddTag(TAG_RESOLVE_RECIPIENTS_PICTURE, ID_RESOLVE_RECIPIENTS_PICTURE)         // not supported with MS-ASProtocolVersion 12.1 or 14.0
+			result.AddTag(TAG_RESOLVE_RECIPIENTS_MAXSIZE, ID_RESOLVE_RECIPIENTS_MAXSIZE)         // not supported with MS-ASProtocolVersion 12.1 or 14.0
+			result.AddTag(TAG_RESOLVE_RECIPIENTS_DATA, ID_RESOLVE_RECIPIENTS_DATA)               // not supported with MS-ASProtocolVersion 12.1 or 14.0
+			result.AddTag(TAG_RESOLVE_RECIPIENTS_MAXPICTURES, ID_RESOLVE_RECIPIENTS_MAXPICTURES) // not supported with MS-ASProtocolVersion 12.1 or 14.0
 		}
 	}
 

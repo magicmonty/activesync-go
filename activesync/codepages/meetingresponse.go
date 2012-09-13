@@ -4,18 +4,44 @@ import (
 	. "github.com/magicmonty/wbxml-go/wbxml"
 )
 
-func MeetingResponse() CodePage {
-	result := NewCodePage("MeetingResponse", 8)
+const (
+	NS_MEETING_RESPONSE                  string = "MeetingResponse"
+	TAG_MEETING_RESPONSE_CALENDARID      string = "CalendarId"
+	TAG_MEETING_RESPONSE_COLLECTIONID    string = "CollectionId"
+	TAG_MEETING_RESPONSE_MEETINGRESPONSE string = "MeetingResponse"
+	TAG_MEETING_RESPONSE_REQUESTID       string = "RequestId"
+	TAG_MEETING_RESPONSE_REQUEST         string = "Request"
+	TAG_MEETING_RESPONSE_RESULT          string = "Result"
+	TAG_MEETING_RESPONSE_STATUS          string = "Status"
+	TAG_MEETING_RESPONSE_USERRESPONSE    string = "UserResponse"
+	TAG_MEETING_RESPONSE_INSTANCEID      string = "InstanceId"
+)
 
-	result.AddTag("CalendarId", 0x05)
-	result.AddTag("CollectionId", 0x06)
-	result.AddTag("MeetingResponse", 0x07)
-	result.AddTag("RequestId", 0x08)
-	result.AddTag("Request", 0x09)
-	result.AddTag("Result", 0x0A)
-	result.AddTag("Status", 0x0B)
-	result.AddTag("UserResponse", 0x0C)
-	result.AddTag("InstanceId", 0x0E)
+const (
+	CP_MEETING_RESPONSE                 byte = 8
+	ID_MEETING_RESPONSE_CALENDARID      byte = 0x05
+	ID_MEETING_RESPONSE_COLLECTIONID    byte = 0x06
+	ID_MEETING_RESPONSE_MEETINGRESPONSE byte = 0x07
+	ID_MEETING_RESPONSE_REQUESTID       byte = 0x08
+	ID_MEETING_RESPONSE_REQUEST         byte = 0x09
+	ID_MEETING_RESPONSE_RESULT          byte = 0x0A
+	ID_MEETING_RESPONSE_STATUS          byte = 0x0B
+	ID_MEETING_RESPONSE_USERRESPONSE    byte = 0x0C
+	ID_MEETING_RESPONSE_INSTANCEID      byte = 0x0E
+)
+
+func MeetingResponse() CodePage {
+	result := NewCodePage(NS_MEETING_RESPONSE, CP_MEETING_RESPONSE)
+
+	result.AddTag(TAG_MEETING_RESPONSE_CALENDARID, ID_MEETING_RESPONSE_CALENDARID)
+	result.AddTag(TAG_MEETING_RESPONSE_COLLECTIONID, ID_MEETING_RESPONSE_COLLECTIONID)
+	result.AddTag(TAG_MEETING_RESPONSE_MEETINGRESPONSE, ID_MEETING_RESPONSE_MEETINGRESPONSE)
+	result.AddTag(TAG_MEETING_RESPONSE_REQUESTID, ID_MEETING_RESPONSE_REQUESTID)
+	result.AddTag(TAG_MEETING_RESPONSE_REQUEST, ID_MEETING_RESPONSE_REQUEST)
+	result.AddTag(TAG_MEETING_RESPONSE_RESULT, ID_MEETING_RESPONSE_RESULT)
+	result.AddTag(TAG_MEETING_RESPONSE_STATUS, ID_MEETING_RESPONSE_STATUS)
+	result.AddTag(TAG_MEETING_RESPONSE_USERRESPONSE, ID_MEETING_RESPONSE_USERRESPONSE)
+	result.AddTag(TAG_MEETING_RESPONSE_INSTANCEID, ID_MEETING_RESPONSE_INSTANCEID)
 
 	return result
 }

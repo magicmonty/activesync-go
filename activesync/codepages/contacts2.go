@@ -4,19 +4,47 @@ import (
 	. "github.com/magicmonty/wbxml-go/wbxml"
 )
 
-func Contacts2() CodePage {
-	result := NewCodePage("Contacts2", 12)
+const (
+	NS_CONTACTS2                   string = "Contacts2"
+	TAG_CONTACTS2_CUSTOMERID       string = "CustomerId"
+	TAG_CONTACTS2_GOVERNMENTID     string = "GovernmentId"
+	TAG_CONTACTS2_IMADDRESS        string = "IMAddress"
+	TAG_CONTACTS2_IMADDRESS2       string = "IMAddress2"
+	TAG_CONTACTS2_IMADDRESS3       string = "IMAddress3"
+	TAG_CONTACTS2_MANAGERNAME      string = "ManagerName"
+	TAG_CONTACTS2_COMPANYMAINPHONE string = "CompanyMainPhone"
+	TAG_CONTACTS2_ACCOUNTNAME      string = "AccountName"
+	TAG_CONTACTS2_NICKNAME         string = "NickName"
+	TAG_CONTACTS2_MMS              string = "MMS"
+)
 
-	result.AddTag("CustomerId", 0x05)
-	result.AddTag("GovernmentId", 0x06)
-	result.AddTag("IMAddress", 0x07)
-	result.AddTag("IMAddress2", 0x08)
-	result.AddTag("IMAddress3", 0x09)
-	result.AddTag("ManagerName", 0x0A)
-	result.AddTag("CompanyMainPhone", 0x0B)
-	result.AddTag("AccountName", 0x0C)
-	result.AddTag("NickName", 0x0D)
-	result.AddTag("MMS", 0x0E)
+const (
+	CP_CONTACTS2                  byte = 12
+	ID_CONTACTS2_CUSTOMERID       byte = 0x05
+	ID_CONTACTS2_GOVERNMENTID     byte = 0x06
+	ID_CONTACTS2_IMADDRESS        byte = 0x07
+	ID_CONTACTS2_IMADDRESS2       byte = 0x08
+	ID_CONTACTS2_IMADDRESS3       byte = 0x09
+	ID_CONTACTS2_MANAGERNAME      byte = 0x0A
+	ID_CONTACTS2_COMPANYMAINPHONE byte = 0x0B
+	ID_CONTACTS2_ACCOUNTNAME      byte = 0x0C
+	ID_CONTACTS2_NICKNAME         byte = 0x0D
+	ID_CONTACTS2_MMS              byte = 0x0E
+)
+
+func Contacts2() CodePage {
+	result := NewCodePage(NS_CONTACTS2, CP_CONTACTS2)
+
+	result.AddTag(TAG_CONTACTS2_CUSTOMERID, ID_CONTACTS2_CUSTOMERID)
+	result.AddTag(TAG_CONTACTS2_GOVERNMENTID, ID_CONTACTS2_GOVERNMENTID)
+	result.AddTag(TAG_CONTACTS2_IMADDRESS, ID_CONTACTS2_IMADDRESS)
+	result.AddTag(TAG_CONTACTS2_IMADDRESS2, ID_CONTACTS2_IMADDRESS2)
+	result.AddTag(TAG_CONTACTS2_IMADDRESS3, ID_CONTACTS2_IMADDRESS3)
+	result.AddTag(TAG_CONTACTS2_MANAGERNAME, ID_CONTACTS2_MANAGERNAME)
+	result.AddTag(TAG_CONTACTS2_COMPANYMAINPHONE, ID_CONTACTS2_COMPANYMAINPHONE)
+	result.AddTag(TAG_CONTACTS2_ACCOUNTNAME, ID_CONTACTS2_ACCOUNTNAME)
+	result.AddTag(TAG_CONTACTS2_NICKNAME, ID_CONTACTS2_NICKNAME)
+	result.AddTag(TAG_CONTACTS2_MMS, ID_CONTACTS2_MMS)
 
 	return result
 }
