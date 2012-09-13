@@ -12,7 +12,7 @@ func makeDataBuffer(data ...byte) *bytes.Buffer {
 
 func getDecodeResult(data ...byte) string {
 	var result string
-	result, _ = Decode(bytes.NewBuffer(data), MakeCodeBook())
+	result, _ = Decode(bytes.NewBuffer(data), MakeCodeBook(PROTOCOL_VERSION_14_1))
 	return result
 }
 
