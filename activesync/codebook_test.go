@@ -1,6 +1,7 @@
 package activesync
 
 import (
+	. "github.com/magicmonty/activesync-go/activesync/base"
 	"github.com/magicmonty/wbxml-go/wbxml"
 	"testing"
 )

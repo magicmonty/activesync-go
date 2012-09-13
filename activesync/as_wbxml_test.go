@@ -3,6 +3,7 @@ package activesync
 import (
 	"bytes"
 	"fmt"
+	. "github.com/magicmonty/activesync-go/activesync/base"
 	. "github.com/magicmonty/wbxml-go/wbxml"
 )
 
