@@ -1,6 +1,7 @@
 package codepages
 
 import (
+	. "github.com/magicmonty/activesync-go/activesync/base"
 	. "github.com/magicmonty/wbxml-go/wbxml"
 )
 
@@ -23,14 +24,16 @@ const (
 )
 
 // not supported with MS-ASProtocolVersion 12.1
-func Notes() CodePage {
+func Notes(protocolVersion byte) CodePage {
 	result := NewCodePage(NS_NOTES, CP_NOTES)
 
-	result.AddTag(TAG_NOTES_SUBJECT, ID_NOTES_SUBJECT)
-	result.AddTag(TAG_NOTES_MESSAGECLASS, ID_NOTES_MESSAGECLASS)
-	result.AddTag(TAG_NOTES_LASTMODIFIEDDATE, ID_NOTES_LASTMODIFIEDDATE)
-	result.AddTag(TAG_NOTES_CATEGORIES, ID_NOTES_CATEGORIES)
-	result.AddTag(TAG_NOTES_CATEGORY, ID_NOTES_CATEGORY)
+	if protocolVersion > PROTOCOL_VERSION_12_1 {
+		result.AddTag(TAG_NOTES_SUBJECT, ID_NOTES_SUBJECT)
+		result.AddTag(TAG_NOTES_MESSAGECLASS, ID_NOTES_MESSAGECLASS)
+		result.AddTag(TAG_NOTES_LASTMODIFIEDDATE, ID_NOTES_LASTMODIFIEDDATE)
+		result.AddTag(TAG_NOTES_CATEGORIES, ID_NOTES_CATEGORIES)
+		result.AddTag(TAG_NOTES_CATEGORY, ID_NOTES_CATEGORY)
+	}
 
 	return result
 }

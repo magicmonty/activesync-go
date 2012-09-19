@@ -33,9 +33,9 @@ func MakeCodeBook(protocolVersion byte) *CodeBook {
 	if protocolVersion > PROTOCOL_VERSION_12_1 {
 		result.AddTagCodePage(codepages.ComposeMail(protocolVersion))
 		result.AddTagCodePage(codepages.Email2(protocolVersion))
-		result.AddTagCodePage(codepages.Notes())
+		result.AddTagCodePage(codepages.Notes(protocolVersion))
 		if protocolVersion > PROTOCOL_VERSION_14_0 {
-			result.AddTagCodePage(codepages.RightsManagement())
+			result.AddTagCodePage(codepages.RightsManagement(protocolVersion))
 		}
 	}
 

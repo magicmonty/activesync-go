@@ -5,20 +5,20 @@ import (
 )
 
 const (
-	NS_PROVISION                                           string = "Provision"
-	TAG_PROVISION_PROVISION                                string = "Provision"
-	TAG_PROVISION_POLICIES                                 string = "Policies"
-	TAG_PROVISION_POLICY                                   string = "Policy"
-	TAG_PROVISION_POLICYTYPE                               string = "PolicyType"
-	TAG_PROVISION_POLICYKEY                                string = "PolicyKey"
-	TAG_PROVISION_DATA                                     string = "Data"
-	TAG_PROVISION_STATUS                                   string = "Status"
-	TAG_PROVISION_REMOTEWIPE                               string = "RemoteWipe"
-	TAG_PROVISION_EASPROVISIONDOC                          string = "EASProvisionDoc"
-	TAG_PROVISION_DEVICEPASSWORDENABLED                    string = "DevicePasswordEnabled"
-	TAG_PROVISION_ALPHANUMERICDEVICEPASSWORDREQUIRED       string = "AlphanumericDevicePasswordRequired"
-	TAG_PROVISION_DEVICEENCRYPTIONENABLED                  string = "DeviceEncryptionEnabled"
-	TAG_PROVISION_REQUIRESTORAGECARDENCRYPTION             string = "RequireStorageCardEncryption"
+	NS_PROVISION                                     string = "Provision"
+	TAG_PROVISION_PROVISION                          string = "Provision"
+	TAG_PROVISION_POLICIES                           string = "Policies"
+	TAG_PROVISION_POLICY                             string = "Policy"
+	TAG_PROVISION_POLICYTYPE                         string = "PolicyType"
+	TAG_PROVISION_POLICYKEY                          string = "PolicyKey"
+	TAG_PROVISION_DATA                               string = "Data"
+	TAG_PROVISION_STATUS                             string = "Status"
+	TAG_PROVISION_REMOTEWIPE                         string = "RemoteWipe"
+	TAG_PROVISION_EASPROVISIONDOC                    string = "EASProvisionDoc"
+	TAG_PROVISION_DEVICEPASSWORDENABLED              string = "DevicePasswordEnabled"
+	TAG_PROVISION_ALPHANUMERICDEVICEPASSWORDREQUIRED string = "AlphanumericDevicePasswordRequired"
+	TAG_PROVISION_DEVICEENCRYPTIONENABLED            string = "DeviceEncryptionEnabled"
+	// TAG_PROVISION_REQUIRESTORAGECARDENCRYPTION             string = "RequireStorageCardEncryption" // equivalent to DeviceEncryptionEnabled
 	TAG_PROVISION_PASSWORDRECOVERYENABLED                  string = "PasswordRecoveryEnabled"
 	TAG_PROVISION_ATTACHMENTSENABLED                       string = "AttachmentsEnabled"
 	TAG_PROVISION_MINDEVICEPASSWORDLENGTH                  string = "MinDevicePasswordLength"
@@ -63,20 +63,20 @@ const (
 )
 
 const (
-	CP_PROVISION                                          byte = 14
-	ID_PROVISION_PROVISION                                byte = 0x05
-	ID_PROVISION_POLICIES                                 byte = 0x06
-	ID_PROVISION_POLICY                                   byte = 0x07
-	ID_PROVISION_POLICYTYPE                               byte = 0x08
-	ID_PROVISION_POLICYKEY                                byte = 0x09
-	ID_PROVISION_DATA                                     byte = 0x0A
-	ID_PROVISION_STATUS                                   byte = 0x0B
-	ID_PROVISION_REMOTEWIPE                               byte = 0x0C
-	ID_PROVISION_EASPROVISIONDOC                          byte = 0x0D
-	ID_PROVISION_DEVICEPASSWORDENABLED                    byte = 0x0E
-	ID_PROVISION_ALPHANUMERICDEVICEPASSWORDREQUIRED       byte = 0x0F
-	ID_PROVISION_DEVICEENCRYPTIONENABLED                  byte = 0x10
-	ID_PROVISION_REQUIRESTORAGECARDENCRYPTION             byte = 0x10
+	CP_PROVISION                                    byte = 14
+	ID_PROVISION_PROVISION                          byte = 0x05
+	ID_PROVISION_POLICIES                           byte = 0x06
+	ID_PROVISION_POLICY                             byte = 0x07
+	ID_PROVISION_POLICYTYPE                         byte = 0x08
+	ID_PROVISION_POLICYKEY                          byte = 0x09
+	ID_PROVISION_DATA                               byte = 0x0A
+	ID_PROVISION_STATUS                             byte = 0x0B
+	ID_PROVISION_REMOTEWIPE                         byte = 0x0C
+	ID_PROVISION_EASPROVISIONDOC                    byte = 0x0D
+	ID_PROVISION_DEVICEPASSWORDENABLED              byte = 0x0E
+	ID_PROVISION_ALPHANUMERICDEVICEPASSWORDREQUIRED byte = 0x0F
+	ID_PROVISION_DEVICEENCRYPTIONENABLED            byte = 0x10
+	// ID_PROVISION_REQUIRESTORAGECARDENCRYPTION             byte = 0x10
 	ID_PROVISION_PASSWORDRECOVERYENABLED                  byte = 0x11
 	ID_PROVISION_ATTACHMENTSENABLED                       byte = 0x13
 	ID_PROVISION_MINDEVICEPASSWORDLENGTH                  byte = 0x14
@@ -135,7 +135,7 @@ func Provision() CodePage {
 	result.AddTag(TAG_PROVISION_DEVICEPASSWORDENABLED, ID_PROVISION_DEVICEPASSWORDENABLED)
 	result.AddTag(TAG_PROVISION_ALPHANUMERICDEVICEPASSWORDREQUIRED, ID_PROVISION_ALPHANUMERICDEVICEPASSWORDREQUIRED)
 	result.AddTag(TAG_PROVISION_DEVICEENCRYPTIONENABLED, ID_PROVISION_DEVICEENCRYPTIONENABLED)
-	result.AddTag(TAG_PROVISION_REQUIRESTORAGECARDENCRYPTION, ID_PROVISION_REQUIRESTORAGECARDENCRYPTION) // equivalent to DeviceEncryptionEnabled
+	// result.AddTag(TAG_PROVISION_REQUIRESTORAGECARDENCRYPTION, ID_PROVISION_REQUIRESTORAGECARDENCRYPTION) // equivalent to DeviceEncryptionEnabled
 	result.AddTag(TAG_PROVISION_PASSWORDRECOVERYENABLED, ID_PROVISION_PASSWORDRECOVERYENABLED)
 	result.AddTag(TAG_PROVISION_ATTACHMENTSENABLED, ID_PROVISION_ATTACHMENTSENABLED)
 	result.AddTag(TAG_PROVISION_MINDEVICEPASSWORDLENGTH, ID_PROVISION_MINDEVICEPASSWORDLENGTH)

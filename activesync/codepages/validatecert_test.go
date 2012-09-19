@@ -1,0 +1,16 @@
+package codepages
+
+import (
+	"testing"
+)
+
+func Test_ValidateCert(t *testing.T) {
+	cp := ValidateCert()
+	checkTagCount(t, 6, cp)
+	checkTagExists(t, TAG_VALIDATE_CERT_VALIDATECERT, ID_VALIDATE_CERT_VALIDATECERT, cp)
+	checkTagExists(t, TAG_VALIDATE_CERT_CERTIFICATES, ID_VALIDATE_CERT_CERTIFICATES, cp)
+	checkTagExists(t, TAG_VALIDATE_CERT_CERTIFICATE, ID_VALIDATE_CERT_CERTIFICATE, cp)
+	checkTagExists(t, TAG_VALIDATE_CERT_CERTIFICATECHAIN, ID_VALIDATE_CERT_CERTIFICATECHAIN, cp)
+	checkTagExists(t, TAG_VALIDATE_CERT_CHECKCRL, ID_VALIDATE_CERT_CHECKCRL, cp)
+	checkTagExists(t, TAG_VALIDATE_CERT_STATUS, ID_VALIDATE_CERT_STATUS, cp)
+}
